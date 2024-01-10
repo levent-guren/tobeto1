@@ -22,7 +22,14 @@ public class Kutu implements Kiyaslanabilir {
 
 	@Override
 	public int kiyasla(Kiyaslanabilir o) {
-		return 0;
+		Kutu kutu = (Kutu) o;
+		if (getMisketSayisi() > kutu.getMisketSayisi()) {
+			return -1;
+		} else if (getMisketSayisi() < kutu.getMisketSayisi()) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }
