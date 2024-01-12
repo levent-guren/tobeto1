@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="motosiklet" class="beans.Motosiklet">
+		<property name="marka" value="Suzuki" />
+		<property name="fiyat" value="1300000" />
+	</bean>
+	<bean id="moto2" class="beans.Motosiklet">
+		<property name="marka" value="Honda" />
+		<property name="fiyat" value="380000" />
+	</bean>
+	<bean id="k1" class="beans.Kitap">
+		<property name="isbn" value="3261745126" />
+		<property name="adi" value="Kitap" />
+	</bean>
+	<bean id="benimGaraj" class="beans.Garaj">
+		<property name="m2" value="500" />
+		<property name="motosiklet1" ref="motosiklet" />
+		<property name="motosiklet2">
+			<bean class="beans.Motosiklet">
+				<property name="marka" value="Yamaha" />
+				<property name="fiyat" value="10000" />
+			</bean>
+		</property>
+	</bean>
+</beans>
