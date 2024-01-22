@@ -1,0 +1,1 @@
+insert into personel values (18, 'Ali');
