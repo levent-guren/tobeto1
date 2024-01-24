@@ -12,8 +12,8 @@ public class ModelMapperConfig {
 	ModelMapper getModelMapper() {
 		ModelMapper mapper = new ModelMapper();
 		// source ve destination sınıflarındaki değişken isimlerinin tamamen aynı
-		// olmasına bakıyor. Bunu yazmazsak değişlen ismini startWith ile arıyor yani ad
-		// değişlenini adlari değişkenine aktarmaya çalışıyor
+		// olmasına bakıyor. Bunu yazmazsak değişken ismini startWith ile arıyor yani ad
+		// değişkenini adlari değişkenine aktarmaya çalışıyor.
 		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		return mapper;
 	}
