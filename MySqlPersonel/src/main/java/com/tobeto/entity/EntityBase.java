@@ -1,6 +1,6 @@
 package com.tobeto.entity;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import jakarta.persistence.GeneratedValue;
@@ -17,16 +17,16 @@ public class EntityBase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
-	private LocalTime yaratmaTarihi;
-	private LocalTime guncellemeTarihi;
+	private LocalDateTime yaratmaTarihi;
+	private LocalDateTime guncellemeTarihi;
 
 	@PrePersist
 	public void prePersist() {
-		yaratmaTarihi = LocalTime.now();
+		yaratmaTarihi = LocalDateTime.now();
 	}
 
 	@PreUpdate
 	public void preUpdate() {
-		guncellemeTarihi = LocalTime.now();
+		guncellemeTarihi = LocalDateTime.now();
 	}
 }
