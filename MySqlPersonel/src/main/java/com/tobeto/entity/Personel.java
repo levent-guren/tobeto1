@@ -19,6 +19,7 @@ public class Personel extends EntityBase {
 	private String email;
 
 	@ManyToOne
+	// @JoinColumn(name = "bolum_no")
 	private Bolum bolum;
 
 	@OneToMany(mappedBy = "personel")

@@ -1,7 +1,5 @@
 package com.tobeto.controller;
 
-import java.util.UUID;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tobeto.dto.adres.AdresYaratRequestDTO;
 import com.tobeto.dto.adres.AdresYaratResponseDTO;
 import com.tobeto.entity.Adres;
-import com.tobeto.entity.Personel;
 import com.tobeto.service.AdresService;
 
 @RestController
@@ -31,9 +28,9 @@ public class AdresController {
 	@PostMapping
 	public AdresYaratResponseDTO adresEkle(@RequestBody AdresYaratRequestDTO dto) {
 		Adres adres = requestMapper.map(dto, Adres.class);
-		Personel personel = new Personel();
-		personel.setId(UUID.fromString(dto.getPersonelId()));
-		adres.setPersonel(personel);
+//		Personel personel = new Personel();
+//		personel.setId(UUID.fromString(dto.getPersonelId()));
+//		adres.setPersonel(personel);
 
 		adres = adresService.addAddressToPersonel(adres);
 		return responseMapper.map(adres, AdresYaratResponseDTO.class);
