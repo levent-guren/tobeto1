@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../service/login.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,6 +12,7 @@ export class MenuComponent {
   constructor(
     private loginService: LoginService,
     private router: Router,
+    public route: ActivatedRoute,
   ) {}
 
   logout() {
