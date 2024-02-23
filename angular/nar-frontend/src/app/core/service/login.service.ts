@@ -7,6 +7,7 @@ import { Observable, map } from 'rxjs';
 })
 export class LoginService {
   loggedIn = false;
+  token = "";
 
   constructor(
     private httpClient: HttpClient,
@@ -16,6 +17,7 @@ export class LoginService {
     return this.httpClient.post<any>('/login', {email, password}).pipe(
       map(data => {
         this.loggedIn = true;
+        this.token = data.token;
         localStorage.setItem('token', data.token);
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);

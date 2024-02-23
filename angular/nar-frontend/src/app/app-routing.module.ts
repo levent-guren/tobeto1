@@ -9,7 +9,7 @@ import { loginGuard } from './core/guard/login.guard';
 const routes: Routes = [
   { path:'', redirectTo: 'login', pathMatch: 'full' },
   { path:'login', component: LoginComponent },
-  { path:'menu', component: MenuComponent, /*canActivate: [loginGuard],*/
+  { path:'menu', component: MenuComponent, canActivate: [loginGuard],
     children: [
       { path: 'yazilim-ilan', loadChildren: 
           () => import('./modules/yazilim-ilan/yazilim-ilan.module')

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { YazilimIlanService } from '../service/yazilim-ilan.service';
 
 @Component({
   selector: 'app-yazilim-ilan-ver',
@@ -20,10 +21,19 @@ export class YazilimIlanVerComponent {
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
+    private yazilimIlanService: YazilimIlanService,
   ) {}
 
   submit() {
-    console.log(this.ilanForm.value);
-    this.toastr.success('Deneme mesajı');
+    this.yazilimIlanService.yazilimIlanVer(this.ilanForm.value).subscribe({
+      next: (resp) => {
+        this.toastr.success('Yazılım İlanı Oluşturulmuştur');
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.error("Hata oluştu");
+      }
+    });
+
   }
 }

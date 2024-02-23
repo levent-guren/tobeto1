@@ -8,8 +8,8 @@ import { LoginService } from '../../service/login.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  email = '';
-  password = '';
+  email = 'levent';
+  password = 'levent';
 
   constructor(
     private loginService: LoginService,
