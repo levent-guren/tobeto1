@@ -29,9 +29,7 @@ public class LoginController {
 
 	@PostMapping("/login")
 	public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO dto) {
-
 		Optional<Kullanicilar> oKullanicilar = kullaniciService.getKullanici(dto.getEmail());
-
 		if (oKullanicilar.isPresent()
 				&& passwordEncoder.matches(dto.getPassword(), oKullanicilar.get().getSifre())) {
 			String token = tokenService.createToken(oKullanicilar.get());

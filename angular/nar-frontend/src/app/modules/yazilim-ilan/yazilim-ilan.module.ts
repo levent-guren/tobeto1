@@ -5,6 +5,7 @@ import { YazilimIlanRoutingModule } from './yazilim-ilan-routing.module';
 import { YazilimIlanComponent } from './yazilim-ilan/yazilim-ilan.component';
 import { YazilimIlanVerComponent } from './yazilim-ilan-ver/yazilim-ilan-ver.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     YazilimIlanRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class YazilimIlanModule { }

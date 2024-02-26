@@ -1,5 +1,7 @@
 package com.tobeto.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,9 @@ public class IlanService {
 
 	public YazilimIlan yazilimIlanVer(YazilimIlan yazilimIlan) {
 		return yazilimIlanRepository.save(yazilimIlan);
+	}
+
+	public List<YazilimIlan> getTumYazilimIlanlari() {
+		return yazilimIlanRepository.findAll();
 	}
 }
