@@ -12,6 +12,7 @@ import { urlInterceptor } from './core/interceptor/url.interceptor';
 import { MenuComponent } from './core/component/menu/menu.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccountComponent } from './core/component/account/account.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ErrorComponent,
     DenemelerComponent,
     MenuComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,8 @@ import { Observable, map } from 'rxjs';
 export class LoginService {
   loggedIn = false;
   token = "";
+  email = "";
+  password = "";
 
   constructor(
     private httpClient: HttpClient,
@@ -18,6 +20,8 @@ export class LoginService {
       map(data => {
         this.loggedIn = true;
         this.token = data.token;
+        this.email = email;
+        this.password = password;
         localStorage.setItem('token', data.token);
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
@@ -26,8 +30,15 @@ export class LoginService {
     );
   }
 
+  relogin():Observable<any> {
+    return this.login(this.email, this.password);
+  }
+  
   logout() {
     this.loggedIn = false;
+    this.token = "";
+    this.email = "";
+    this.password = "";
     localStorage.clear();
   }
 }

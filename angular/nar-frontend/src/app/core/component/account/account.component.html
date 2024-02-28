@@ -1,0 +1,22 @@
+<div class="sayfa">
+    <form [formGroup]="accountForm" (ngSubmit)="submit()">
+        <div class="mb-3">
+            <label for="txtEmail" class="form-label">E-Mail</label>
+            <input formControlName="email" type="text" class="form-control" id="txtEmail" aria-describedby="e-mail">
+        </div>
+        <div class="mb-3">
+            <label for="txtEskiSifre" class="form-label">Eski Şifre</label>
+            <input formControlName="eskiSifre" type="password" class="form-control" id="txtEskiSifre" aria-describedby="eski sifre">
+        </div>
+        <div class="mb-3">
+            <label for="txtSifre" class="form-label">Şifre</label>
+            <input formControlName="sifre" type="password" class="form-control" id="txtSifre" aria-describedby="sifre">
+        </div>
+        <div class="mb-3">
+            <label for="txtSifre2" class="form-label">Tekrar Şifre</label>
+            <input formControlName="sifre2" type="password" class="form-control" id="txtSifre2" aria-describedby="sifre2">
+        </div>
+        <button class="btn btn-primary" type="submit">Güncelle</button>
+        <button class="btn btn-warning ms-2" [routerLink]="['..']">Geri</button>
+    </form>
+</div>

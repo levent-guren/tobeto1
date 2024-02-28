@@ -5,6 +5,7 @@ import { ErrorComponent } from './core/component/error/error.component';
 import { DenemelerComponent } from './denemeler/denemeler.component';
 import { MenuComponent } from './core/component/menu/menu.component';
 import { loginGuard } from './core/guard/login.guard';
+import { AccountComponent } from './core/component/account/account.component';
 
 const routes: Routes = [
   { path:'', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'cevirmenlik-ilan', loadChildren: 
           () => import('./modules/cevirmenlik-ilan/cevirmenlik-ilan.module')
           .then(m => m.CevirmenlikIlanModule) },
+      { path: 'account', component: AccountComponent }
     ]
   },
   { path:'denemeler', component: DenemelerComponent },

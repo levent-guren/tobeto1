@@ -42,7 +42,8 @@ public class TokenService {
 		customKeys.put("roller", roller);
 		builder = builder.claims(customKeys);
 
-		Instant tarih = Instant.now().plus(15, ChronoUnit.MINUTES);
+//		Instant tarih = Instant.now().plus(15, ChronoUnit.MINUTES);
+		Instant tarih = Instant.now().plus(1, ChronoUnit.SECONDS);
 
 		builder = builder.subject("login").id(kullanicilar.getKullaniciAdi()).issuedAt(new Date())
 				.expiration(Date.from(tarih));
