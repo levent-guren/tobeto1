@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../service/login.service';
 import { AccountService } from '../../service/account.service';
 import { ToastrService } from 'ngx-toastr';
@@ -13,9 +13,9 @@ export class AccountComponent {
   accountForm = this.fb.nonNullable.group({
     email: { value: this.loginService.email, disabled: true },
     eskiSifre: "",
-    sifre: "",
+    sifre: ["", [ Validators.required, Validators.minLength(3), Validators.pattern(/admin/)/*, yasakliIsimKontrolu */] ],
     sifre2: "",
-  });
+  }, {validators: [/*sifreTekrariKontrolu*/]});
 
   constructor(
     private fb: FormBuilder,

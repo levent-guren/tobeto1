@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,8 @@ import { MenuComponent } from './core/component/menu/menu.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccountComponent } from './core/component/account/account.component';
+import { APP_CONFIG } from './app.config';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,11 @@ import { AccountComponent } from './core/component/account/account.component';
     BrowserAnimationsModule,
   ],
   providers: [
-    provideHttpClient(withInterceptors([urlInterceptor]))
+    provideHttpClient(withInterceptors([urlInterceptor])),
+    {
+      provide: APP_CONFIG,
+      useValue: environment,
+    },
   ],
   bootstrap: [AppComponent]
 })

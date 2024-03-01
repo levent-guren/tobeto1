@@ -1,9 +1,10 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
-import { inject } from '@angular/core';
+import { Injector, inject } from '@angular/core';
 import { LoginService } from '../service/login.service';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { APP_CONFIG } from '../../app.config';
 
 export const urlInterceptor: HttpInterceptorFn = (req, next) => {
   let url = req.url;
@@ -11,9 +12,10 @@ export const urlInterceptor: HttpInterceptorFn = (req, next) => {
   let loginService = inject(LoginService);
   let toastrService = inject(ToastrService);
   let router = inject(Router);
-
+  let appConfig: any = inject(APP_CONFIG);
+  
   if (!url.startsWith('/assets/')) {
-    url = 'http://localhost:8080/api/v1' + url;
+    url = appConfig.serverURL + url;
     headers = headers.append('Authorization', 'Bearer ' + loginService.token);
   }
   let newReq = req.clone({
@@ -22,8 +24,7 @@ export const urlInterceptor: HttpInterceptorFn = (req, next) => {
   });
   return next(newReq).pipe(
     catchError((error) => {
-      console.log(error.url);
-      if (error instanceof HttpErrorResponse && error.url != 'http://localhost:8080/api/v1/login' && error.status == 403) {
+      if (error instanceof HttpErrorResponse && error.url != appConfig.serverURL+ '/login' && error.status == 403) {
         // login işlemi yapılmıyor ve token hatası döndü
         return loginService.relogin().pipe(
           switchMap((token: any) => {

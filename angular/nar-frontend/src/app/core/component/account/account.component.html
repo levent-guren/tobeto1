@@ -1,4 +1,5 @@
 <div class="sayfa">
+    {{ accountForm.get('sifre')?.errors | json }}
     <form [formGroup]="accountForm" (ngSubmit)="submit()">
         <div class="mb-3">
             <label for="txtEmail" class="form-label">E-Mail</label>
@@ -10,13 +11,17 @@
         </div>
         <div class="mb-3">
             <label for="txtSifre" class="form-label">Şifre</label>
-            <input formControlName="sifre" type="password" class="form-control" id="txtSifre" aria-describedby="sifre">
+            <input formControlName="sifre" type="password" class="form-control" [class.is-invalid]="!accountForm.get('sifre')?.valid && accountForm.get('sifre')?.touched" id="txtSifre" aria-describedby="sifre">
+            <div *ngIf="!accountForm.get('sifre')?.valid && accountForm.get('sifre')?.touched" class="small text-danger">
+                <div *ngIf="accountForm.get('sifre')?.errors?.['required'] ">Şifre alanını boş geçemezsiniz.</div>
+                <div *ngIf="accountForm.get('sifre')?.errors?.['minlength']">Şifre en az 3 karakter olmalıdır</div>
+            </div>
         </div>
         <div class="mb-3">
             <label for="txtSifre2" class="form-label">Tekrar Şifre</label>
             <input formControlName="sifre2" type="password" class="form-control" id="txtSifre2" aria-describedby="sifre2">
         </div>
-        <button class="btn btn-primary" type="submit">Güncelle</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!accountForm.valid">Güncelle</button>
         <button class="btn btn-warning ms-2" [routerLink]="['..']">Geri</button>
     </form>
 </div>
