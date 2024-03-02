@@ -1,6 +1,0 @@
-<div class="sayfa">
-    @for (ilan of ilanlar; track $index) {
-        <app-ilan-kart [adi]= "ilan.isim" [soyadi]="ilan.soyisim" (basildi)="kartSecildi($event)" />
-    }
-    <button class="btn btn-primary" [routerLink]="['./ilan-ver']" [relativeTo]="router.parent">İlan Ver</button>
-</div>
